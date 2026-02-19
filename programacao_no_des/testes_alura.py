@@ -10,7 +10,7 @@ type(preco)
 # Soma impossível de inteiro e string 
 idade1 = "10"
 idade2 = "20" 
-print(idade1 + idade2,"a soma as idades em numero é",int(idade1+idade2), sep=" ")
+print(idade1 + idade2,"a soma as idades em numero é",int(idade1)+int(idade2), sep=" ")
 
 # Soma possível após conversão de string para inteiro
 idade1 = 10 
