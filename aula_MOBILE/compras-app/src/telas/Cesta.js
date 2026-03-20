@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
 
+
+
+
+
 const cesta = {
   nome: "Cesta de Verduras",
   fazenda: "Fazenda Boa Terra",
