@@ -24,7 +24,7 @@ export default function App() {
  const adicionarAoCarrinho = (item) => setCarrinho([...carrinho, item]);
 
 
- // agora fecharPedido só muda para a tela de pagamento
+ // fecharPedido só muda para a tela de pagamento
  const fecharPedido = () => {
    setTelaAtual("Pagamento");
  };
@@ -94,4 +94,3 @@ export default function App() {
 
  return null;
 }
-
