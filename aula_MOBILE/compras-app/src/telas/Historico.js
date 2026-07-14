@@ -4,7 +4,7 @@ import { View, Text, FlatList, Button } from "react-native";
 
 export default function Historico({ pedidos, voltarCatalogo }) {
  return (
-   <View style={{ flex: 1, padding: 20 }}>
+   <View style={{ flex: 1, padding: 60 }}>
      <Text style={{ fontSize: 22, marginBottom: 20 }}>Histórico de Pedidos</Text>
 
 
@@ -40,4 +40,3 @@ export default function Historico({ pedidos, voltarCatalogo }) {
    </View>
  );
 }
-
