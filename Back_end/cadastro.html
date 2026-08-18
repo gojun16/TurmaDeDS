@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <!-- Seção do Formulário -->
+        <section class="form-section">
+            <h2>Novo Cadastro</h2>
+            <form id="cadastroForm">
+                <div class="input-group">
+                    <label for="nomeCompleto">Nome Completo</label>
+                    <input type="text" id="nomeCompleto" placeholder="Ex: João Silva Santos" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="emailUsuario">E-mail</label>
+                    <input type="email" id="emailUsuario" placeholder="Ex: joao@email.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="cpfUsuario">CPF (Apenas números)</label>
+                    <input type="text" id="cpfUsuario" placeholder="Ex: 12345678901" maxlength="11" required>
+                </div>
+
+                <button type="submit" id="btnSalvar">Salvar Cadastro</button>
+            </form>
+        </section>
+
+        <!-- Seção da Tabela / Lista de Cadastros -->
+        <section class="list-section">
+            <div class="list-header">
+                <h2>Usuários Cadastrados</h2>
+                <div class="search-group">
+                    <input type="text" id="buscaNome" placeholder="Buscar por nome...">
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome Formatado</th>
+                            <th>E-mail (Minusculo)</th>
+                            <th>CPF Formatado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaCadastros">
+                        <!-- Os dados do vetor do JavaScript entrarão aqui dinamicamente -->
+                        <tr>
+                            <td colspan="4" class="empty-message">Nenhum cadastro realizado ainda.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Link para a lógica da próxima aula -->
+    <script src="script.js"></script>
+</body>
+</html>
