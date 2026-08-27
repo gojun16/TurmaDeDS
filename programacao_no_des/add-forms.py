@@ -1,6 +1,6 @@
 import sqlite3
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 
 # Conexão com o banco de dados SQLite
 conn = sqlite3.connect("clientes.db")
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 conn.commit()
 
 
-# Função para salvar os dados no banco
+# Função para salvar os dados
 def salvar_cliente():
   nome = entry_nome.get()
   email = entry_email.get()
@@ -40,18 +40,39 @@ def salvar_cliente():
     )
 
 
-# Função para limpar os campos do formulário
+# Função para limpar os campos
 def limpar_formulario():
   entry_nome.delete(0, tk.END)
   entry_email.delete(0, tk.END)
   entry_telefone.delete(0, tk.END)
 
 
-# Configuração da janela principal
+# Função para visualizar clientes cadastrados
+def visualizar_clientes():
+  janela_visualizacao = tk.Toplevel()
+  janela_visualizacao.title("Clientes Cadastrados")
+
+  tree = ttk.Treeview(
+      janela_visualizacao,
+      columns=("ID", "Nome", "Email", "Telefone"),
+      show="headings",
+  )
+  tree.heading("ID", text="ID")
+  tree.heading("Nome", text="Nome")
+  tree.heading("Email", text="Email")
+  tree.heading("Telefone", text="Telefone")
+  tree.pack(fill=tk.BOTH, expand=True)
+
+  cursor.execute("SELECT * FROM clientes")
+  for row in cursor.fetchall():
+    tree.insert("", tk.END, values=row)
+
+
+# Janela Principal
 janela = tk.Tk()
 janela.title("Cadastro de Clientes")
 
-# Layout da interface gráfica
+# Rótulos e Entradas
 tk.Label(janela, text="Nome:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
 entry_nome = tk.Entry(janela, width=30)
 entry_nome.grid(row=0, column=1, padx=10, pady=5)
@@ -75,7 +96,11 @@ btn_salvar.grid(row=3, column=0, pady=10)
 btn_limpar = tk.Button(janela, text="Limpar", command=limpar_formulario)
 btn_limpar.grid(row=3, column=1, pady=10)
 
+btn_visualizar = tk.Button(
+    janela, text="Visualizar Clientes", command=visualizar_clientes
+)
+btn_visualizar.grid(row=4, column=0, columnspan=2, pady=5)
+
 janela.mainloop()
 
-# Fechar conexão com o banco ao fechar a janela
 conn.close()
