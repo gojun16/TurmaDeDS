@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Clientes Cadastrados</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    button { padding: 10px 15px; font-size: 14px; cursor: pointer; }
+    
+    /* Estilos da Caixa de Diálogo (Modal) */
+    .modal-background {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 320px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    ul { list-style: none; padding: 0; margin: 10px 0; }
+    li { padding: 8px 0; border-bottom: 1px solid #eee; }
+    
+    .btn-fechar {
+      margin-top: 15px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Gerenciamento de Cadastro</h2>
+  <button onclick="abrirModal()">Listar Clientes Cadastrados</button>
+
+  <!-- Caixa de Diálogo (Modal) -->
+  <div id="modalClientes" class="modal-background">
+    <div class="modal-box">
+      <div class="modal-header">Clientes Cadastrados</div>
+      <ul id="listaModal"></ul>
+      <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    // Dados de exemplo
+    const clientes = [
+      { id: 1, nome: "João Silva" },
+      { id: 2, nome: "Maria Oliveira" },
+      { id: 3, nome: "Carlos Souza" }
+    ];
+
+    function abrirModal() {
+      const lista = document.getElementById("listaModal");
+      lista.innerHTML = "";
+      
+      clientes.forEach(cliente => {
+        const item = document.createElement("li");
+        item.textContent = `${cliente.id} - ${cliente.nome}`;
+        lista.appendChild(item);
+      });
+
+      document.getElementById("modalClientes").style.display = "flex";
+    }
+
+    function fecharModal() {
+      document.getElementById("modalClientes").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
